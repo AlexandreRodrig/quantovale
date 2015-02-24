@@ -1,36 +1,68 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <jsp:include page="header.jsp" />	
  
- <script type="text/javascript">
- $('#formlogin').submit(function(e) {
- 	if ($('#nome').val() == '' ||$('#nome').val() == undefined){
-         messageDialog('Preencha o nome');
-         return false;
-     }
- 	if (!validateEmail($('#email').val())){
-         messageDialog('Preencha corretamente o seu e-mail');
-         return false;
-     }
- 	
- 	if ($('#password').val() == '' ||$('#password').val() == undefined){
-        messageDialog('Preencha o senha corretamente');
-        return false;
-    }
- 	if ($('#password').val() != $('#confirmpassword').val()){
-        messageDialog('Senha digitada não confere com confirmar senha');
-        return false;
-    }
-   		
-     
-	});
- 	function validateEmail(email) {
-	  	var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-	  	return regex.test(email);
+<script type="text/javascript">
+   
+function valida(form) {
+	if (formlogin.nome.value=="") {
+		alert("Preencha o nome corretamente.");
+		form.nome.focus();
+	return false;
 	}
- 	
- 	  $(document).on('click', '#btn-cadastrar', function() {
-      	$('#formlogin').submit();
-      });
+	var filtro_mail = /^.+@.+\..{2,3}$/
+	if (!filtro_mail.test(formlogin.email.value) || formlogin.email.value=="") {
+		alert("Preencha o e-mail corretamente.");
+		formlogin.email.focus();
+		return false;
+	}
+
+	if (form.idade.value=="" || !IsNum(form.idade.value)) {
+		alert("Preencha a idade corretamente.");
+		form.idade.focus();
+	return false;
+	}
+
+	//if (form.endereco.value=="" || form.endereco.value.length < 8) {
+	//	alert("Preencha o endereço corretamente.");
+	//	form.endereco.focus();
+	//	return false;
+	//}
+
+	//if (form.tel.value=="") {
+	//	alert("Preencha o telefone corretamente.");
+	//	form.tel.focus();
+	//	return false;
+	//}
+
+	//if (form.data_nascimento.value=="" || form.data_nascimento.value.length != 10) {
+	//	alert("Preencha a data de nascimento corretamente.");
+	//	form.data_nascimento.focus();
+	//	return false;
+	//}
+
+	if (formlogin.password.value=="" || formlogin.password.value.length < 6) {
+		alert("Preencha a senha corretamente.");
+		form.senha.focus();
+		return false;
+	}
+
+	if (formlogin.confirmpassword.value=="" || form.confirmpassword.value.length < 6) {
+		alert("Preencha a confirmação de senha corretamente.");
+		form.conf_senha.focus();
+		return false;
+	}
+
+	if (formlogin.password.value!=formlogin.confirmpassword.value) {
+		alert("A senha e a confirmação tem de ser iguais.");
+		form.conf_senha.focus();
+		return false;
+	}
+
+	//if (form.sexo[0].checked==false && form.sexo[1].checked==false) {
+	//alert("Selecione o sexo.");
+	//return false;
+	
+	}
 </script>
 
   <body>
@@ -44,7 +76,7 @@
 	  	
 	  
 	  	
-		      <form class="form-login" id="formlogin" action="cadastrar-usuario" method="post">
+		      <form class="form-login" id="formlogin" action="cadastrar-usuario" method="post" onsubmit="return valida(this);">
 		        <h2 class="form-login-heading">Cadastre se</h2>
 		        <div class="login-wrap">
 		        
@@ -66,7 +98,7 @@
 		            <label class="checkbox">
 		             
 		            </label>
-		            <button class="btn btn-theme btn-block" id="btn-cadastrar" type="button"><i class="fa fa-lock"></i> Cadastrar</button><br />
+		            <button class="btn btn-theme btn-block" id="btn-cadastrar" type="submit"><i class="fa fa-lock"></i> Cadastrar</button><br />
 					<button class="btn btn-theme btn-block" href="index" type="button" style="background:red"><i class="fa fa-lock"></i> Cancelar</button>
 		            <hr>
 		       </form>

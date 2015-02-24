@@ -31,13 +31,14 @@
 <script type="text/javascript" src="${rootURL}resources/js/jquery.nivo.slider.js"></script>
 <script src="${rootURL}resources/js/jquery.magnific-popup.js" type="text/javascript"></script>
 <link href="${rootURL}resources/css/magnific-popup.css" rel="stylesheet" type="text/css">
-<link href="${rootURL}resources/assets/css/bootstrap.css" rel="stylesheet">
+<link href="${rootURL}resources/assets/css/bootstrap.css" rel="stylesheet" type="text/css">
 <!--external css-->
 <link href="${rootURL}resources/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />       
 <!-- Custom styles for this template -->
 <link href="${rootURL}resources/assets/css/style.css" rel="stylesheet">
 <link href="${rootURL}resources/assets/css/style-responsive.css" rel="stylesheet">
 <script src="${rootURL}resources/assets/js/bootstrap.min.js"></script>
+<script src="${rootURL}resources/js/jquery.validate.js" type="text/javascript"></script>
 	
  <script type="text/javascript">
 
