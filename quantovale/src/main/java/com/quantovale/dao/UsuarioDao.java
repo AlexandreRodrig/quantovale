@@ -7,4 +7,6 @@ public interface UsuarioDao {
 	public Usuario addUsuario (Usuario usuario);
 	
 	Usuario validaEmailExistente(Usuario usuario);
+	
+	Usuario validaUsuario(Usuario usuario);
 }

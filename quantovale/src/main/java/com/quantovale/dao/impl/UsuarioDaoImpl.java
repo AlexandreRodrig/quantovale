@@ -47,6 +47,20 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	
 		return usuario;
 	}
+
+	@Override
+	public Usuario validaUsuario(Usuario usuario) {
+		TypedQuery<Usuario> query = em.createQuery("select u from Usuario u where u.email=?1 and u.password=?2", Usuario.class);
+		query.setParameter(1, usuario.getEmail());
+		query.setParameter(2, usuario.getPassword());
+		try {
+			 usuario = query.getSingleResult();
+		} catch (NonUniqueResultException|NoResultException e) {
+			usuario = null;
+		}
+		return usuario;
+
+	}
 	
 
 }

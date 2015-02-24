@@ -10,7 +10,7 @@
 	  <div id="login-page">
 	  	<div class="container">
 	  	
-		      <form class="form-login" action="index.html">
+		      <form class="form-login" action="logar" method="post">
 		        <h2 class="form-login-heading">Logar</h2>
 		        <div class="login-wrap">
 		            <input type="text" class="form-control" placeholder="Email" autofocus>
