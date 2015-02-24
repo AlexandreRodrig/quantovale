@@ -99,7 +99,7 @@ function valida(form) {
 		             
 		            </label>
 		            <button class="btn btn-theme btn-block" id="btn-cadastrar" type="submit"><i class="fa fa-lock"></i> Cadastrar</button><br />
-					<button class="btn btn-theme btn-block" href="index" type="button" style="background:red"><i class="fa fa-lock"></i> Cancelar</button>
+		            <a href="index" class="btn btn-theme btn-block" style="background:red"><i class="fa fa-lock"></i> Cancelar</a>
 		            <hr>
 		       </form>
 		            <!--

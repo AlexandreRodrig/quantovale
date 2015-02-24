@@ -26,11 +26,26 @@ public class Usuario {
 	
 	@Column (name="data")
 	private Date data;
+	
+	@Column (name="senha")
+	private String password;
 	/**
 	 * @return the id
 	 */
 	public int getId() {
 		return id;
+	}
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	/**
 	 * @param id the id to set
