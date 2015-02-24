@@ -40,11 +40,8 @@
 <script src="${rootURL}resources/assets/js/bootstrap.min.js"></script>
 	
  <script type="text/javascript">
-    $(window).load(function() {
-        $('#slider').nivoSlider();
-    });
-	
-	$(document).ready(function(){
+
+ $(document).ready(function(){
 	
 			$("#cont1").hide();	
 			$("#cont2").hide();	
@@ -65,11 +62,7 @@
    
 	
     </script> 
-	 <script type="text/javascript">
-	    $(window).load(function() {
-	        $('#slider').nivoSlider();
-	    });
-	    </script> 
+ 
 
   
 </head>
