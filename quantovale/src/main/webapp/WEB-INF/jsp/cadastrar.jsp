@@ -1,5 +1,37 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <jsp:include page="header.jsp" />	
+ 
+ <script type="text/javascript">
+ $('#formlogin').submit(function(e) {
+ 	if ($('#nome').val() == '' ||$('#nome').val() == undefined){
+         messageDialog('Preencha o nome');
+         return false;
+     }
+ 	if (!validateEmail($('#email').val())){
+         messageDialog('Preencha corretamente o seu e-mail');
+         return false;
+     }
+ 	
+ 	if ($('#password').val() == '' ||$('#password').val() == undefined){
+        messageDialog('Preencha o senha corretamente');
+        return false;
+    }
+ 	if ($('#password').val() != $('#confirmpassword').val()){
+        messageDialog('Senha digitada não confere com confirmar senha');
+        return false;
+    }
+   		
+     
+	});
+ 	function validateEmail(email) {
+	  	var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	  	return regex.test(email);
+	}
+ 	
+ 	  $(document).on('click', '#btn-cadastrar', function() {
+      	$('#formlogin').submit();
+      });
+</script>
 
   <body>
 
@@ -12,30 +44,30 @@
 	  	
 	  
 	  	
-		      <form class="form-login" action="cadastrar-usuario" method="post">
+		      <form class="form-login" id="formlogin" action="cadastrar-usuario" method="post">
 		        <h2 class="form-login-heading">Cadastre se</h2>
 		        <div class="login-wrap">
 		        
+		        <c:if test="${erros.size()>0}">
 		       		 <div class="alert alert-danger">
-	  							<c:if test="${erros.size()>0}">
+	  							
 	  								 <c:forEach  var="erros" items="${erros}">
    					 					<c:out value="${erros}"/><p>
-									</c:forEach> 
-								</c:if>	 		
+									</c:forEach> 							 		
 	  				</div>
-		        
-		            <input type="text" name="nome" class="form-control" placeholder="Nome" autofocus>
+		        </c:if>	
+		            <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" autofocus>
 		            <br>
-					 <input type="text" name="email" class="form-control" placeholder="Email" autofocus>
+					 <input type="text" name="email" id="email" class="form-control" placeholder="Email" autofocus>
 		            <br>
-		            <input type="password" name="password" class="form-control" placeholder="Password">
+		            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
 					<br>
-		            <input type="password" name="confirmpassword" class="form-control" placeholder="Confirma Password">
+		            <input type="password" name="confirmpassword" id="confirmpassword" class="form-control" placeholder="Confirma Password">
 		            <label class="checkbox">
 		             
 		            </label>
-		            <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> Cadastrar</button><br />
-					<button class="btn btn-theme btn-block" href="index" type="submit" style="background:red"><i class="fa fa-lock"></i> Cancelar</button>
+		            <button class="btn btn-theme btn-block" id="btn-cadastrar" type="button"><i class="fa fa-lock"></i> Cadastrar</button><br />
+					<button class="btn btn-theme btn-block" href="index" type="button" style="background:red"><i class="fa fa-lock"></i> Cancelar</button>
 		            <hr>
 		       </form>
 		            <!--
