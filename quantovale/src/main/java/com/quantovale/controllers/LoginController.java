@@ -1,10 +1,5 @@
 package com.quantovale.controllers;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import javax.management.InvalidAttributeValueException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +14,22 @@ import com.quantovale.services.LoginService;
 
 @Controller
 public class LoginController {
-	
+
 	@Autowired
 	private LoginService loginService;
+
 	private Usuario usuario;
-	
+
 	@RequestMapping(value = "/logar", method = RequestMethod.POST)
-	public String preLogin( @RequestParam("email") String email,@RequestParam("password") String password, HttpServletRequest request, ModelMap modelMap) {
-		
+	public String preLogin(@RequestParam("email") String email,
+			@RequestParam("password") String password,
+			HttpServletRequest request, ModelMap modelMap) {
+
 		usuario = new Usuario();
+		usuario.setEmail(email);
+		usuario.setPassword(password);
 		usuario = loginService.logarUsuario(usuario);
-		if (usuario!=null){
+		if (usuario != null) {
 			request.getSession().setAttribute("usuario", usuario);
 			return "grid_problemas";
 		}

@@ -74,6 +74,8 @@
 	   <div class="wrap">
 		 	     <div class="logo">
 						<a href="index.html"><img src="${rootURL}resources/images/logo.png" alt="" /></a>
+						<p style="color: white;">Bem vindo : ${usuario.nome}</p>
+						
 					</div>	
 						<div class="menu">
 						    <ul>

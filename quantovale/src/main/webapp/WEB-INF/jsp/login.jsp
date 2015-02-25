@@ -13,16 +13,17 @@
 		      <form class="form-login" action="logar" method="post">
 		        <h2 class="form-login-heading">Logar</h2>
 		        <div class="login-wrap">
-		            <input type="text" class="form-control" placeholder="Email" autofocus>
+		            <input type="text" name="email" class="form-control" placeholder="Email" autofocus>
 		            <br>
-		            <input type="password" class="form-control" placeholder="senha">
+		            <input type="password" name="password" class="form-control" placeholder="senha">
 		            <label class="checkbox">
 		                <span class="pull-right">
 		                    <a data-toggle="modal" href="login.html#myModal"> Esqueceu sua senha?</a>
 		
 		                </span>
 		            </label>
-		            <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> Logar</button>
+		            <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> Logar</button>
+		           </form>
 		            <hr>
 					<!--	
 		            <div class="login-social-link centered">
