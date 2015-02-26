@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR" lang="pt-BR">
@@ -73,20 +74,30 @@
   	  <div class="header_top">
 	   <div class="wrap">
 		 	     <div class="logo">
-						<a href="index.html"><img src="${rootURL}resources/images/logo.png" alt="" /></a>
-						<p style="color: white;">Bem vindo : ${usuario.nome}</p>
+						<a href="index"><img src="${rootURL}resources/images/logo.png" alt="" /></a>
+						<p style="color: white;"><c:if test="${usuario!=null}">Olá : ${usuario.nome}</c:if></p>
 						
 					</div>	
 						<div class="menu">
 						    <ul>
-						    	<li class="current"><a href="index.html" class="scroll"> Home</a></li>
-								<li class="current"><a href="index.html" class="scroll"> Como funciona?</a></li>
-								<li><a href="index.html" class="scroll">Saiba Mais</a></li>
+						    	<li class="current"><a href="index"> Home</a></li>
+								<li class="current"><a href="index"> Como funciona?</a></li>
+								<li><a href="index">Saiba Mais</a></li>
 								<li>
-									<a class="logout" href="cadastrar"><span class="btn btn-round btn-info">Cadastre-se</span></a></li>
+									<c:if test="${usuario==null}">
+										<a class="logout" href="cadastrar"><span class="btn btn-round btn-info">Cadastre-se</span></a></li>
+									</c:if>
+									<c:if test="${usuario!=null}">
+										<a class="logout" href="minhaconta"><span class="btn btn-round btn-info">Minha conta</span></a></li>
+									</c:if>
 								</li>
 								<li>
+									<c:if test="${usuario!=null}">
+										<a class="logout" href="logout"><span class="btn btn-round btn-danger">Logout</span></a></li>
+								</c:if>
+								<c:if test="${usuario==null}">
 									<a class="logout" href="login"><span class="btn btn-round btn-danger">Login</span></a></li>
+								</c:if>
 								</li>
 							</ul>
 						</div>							

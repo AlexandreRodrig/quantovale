@@ -1,29 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <jsp:include page="header.jsp" />
- 
-  <div class="header" id="home">
-  	  <div class="header_top">
-	   <div class="wrap">
-		 	     <div class="logo">
-						<a href="index.html"><img src="images/logo.png" alt="" /></a>
-					</div>	
-						<div class="menu">
-						    <ul>
-						    	<li class="current"><a href="index.html" class="scroll"> Home</a></li>
-								<li class="current"><a href="index.html" class="scroll"> Como funciona?</a></li>
-								<li><a href="index.html" class="scroll">Saiba Mais</a></li>
-								<li>
-									<a class="logout" href="cadastrar.html"><span class="btn btn-round btn-info">Cadastre-se</span></a></li>
-								</li>
-								<li>
-									<a class="logout" href="login.html"><span class="btn btn-round btn-danger">Login</span></a></li>
-								</li>
-							</ul>
-						</div>							
-	    		 <div class="clear"></div>
-	        </div>
-	    </div>
-	 </div>			      	
+ 	      	
      <div class="main" id="container">
 	 	<div class="content">	
 		

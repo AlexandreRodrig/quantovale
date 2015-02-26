@@ -1,5 +1,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- <jsp:include page="header.jsp" />	
+ <jsp:include page="header.jsp" />
+ 
+ <script type="text/javascript">
+   
+function valida(form) {
+
+	var filtro_mail = /^.+@.+\..{2,3}$/
+	if (!filtro_mail.test(formlogin.email.value) || formlogin.email.value=="") {
+		alert("Preencha o e-mail corretamente.");
+		formlogin.email.focus();
+		return false;
+	}
+
+	if (formlogin.password.value=="" || formlogin.password.value.length < 6) {
+		alert("Preencha a senha corretamente.");
+		formlogin.password.focus();
+		return false;
+	}
+
+}
+</script>	
 
   <body>
 
@@ -10,8 +30,17 @@
 	  <div id="login-page">
 	  	<div class="container">
 	  	
-		      <form class="form-login" action="logar" method="post">
+		
+		      <form class="form-login" name="formlogin" action="logar" method="post" onsubmit="return valida(this);">
 		        <h2 class="form-login-heading">Logar</h2>
+		              <c:if test="${erros.size()>0}">
+			       		 <div class="alert alert-danger">	  							
+		  					 <c:forEach  var="erros" items="${erros}">
+	   					 		<p align="center"><c:out value="${erros}"/></p>
+							</c:forEach> 							 		
+		  				</div>
+	  				</c:if>
+		        
 		        <div class="login-wrap">
 		            <input type="text" name="email" class="form-control" placeholder="Email" autofocus>
 		            <br>
@@ -23,6 +52,8 @@
 		                </span>
 		            </label>
 		            <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> Logar</button>
+		         	<a href="index" class="btn btn-theme btn-block" style="background:red"><i class="fa fa-lock"></i> Cancelar</a>
+		           	
 		           </form>
 		            <hr>
 					<!--	

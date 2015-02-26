@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -50,10 +52,20 @@
 								<li><a href="#section-2" class="scroll">Saiba Mais</a></li>
 								
 								<li>
-									<a class="logout" href="cadastrar"><span class="btn btn-round btn-info">Cadastre-se</span></a></li>
+									<c:if test="${usuario==null}">
+										<a class="logout" href="cadastrar"><span class="btn btn-round btn-info">Cadastre-se</span></a></li>
+									</c:if>
+									<c:if test="${usuario!=null}">
+										<a class="logout" href="minhaconta"><span class="btn btn-round btn-info">Minha conta</span></a></li>
+									</c:if>
 								</li>
+									<c:if test="${usuario!=null}">
+											<a class="logout" href="logout"><span class="btn btn-round btn-danger">Logout</span></a></li>
+									</c:if>
+									<c:if test="${usuario==null}">
+										<a class="logout" href="login"><span class="btn btn-round btn-danger">Login</span></a></li>
+									</c:if>
 								<li>
-									<a class="logout" href="login"><span class="btn btn-round btn-danger">Login</span></a></li>
 								</li>
 							</ul>
 						</div>							
@@ -166,6 +178,8 @@
 						<div class="col_1_of_2 span_1_of_2">
 							<div class="footer_logo">
 							 <img src="${rootURL}resources/images/logo.png" alt="" />
+							 <p style="color: white;"><c:if test="${usuario!=null}">Olá : ${usuario.nome}</c:if></p>
+							 
 							</div>
 						      <p>Lorem ipsum dolor sit amet, sed do eiusmod tempor ut labore et dolore magna aliqua. Duis aute irure dolor in velit esse cillum dolore eu fugiat nulla pariatur.</p>
                                 <div class="search_box"> 		    		 	
