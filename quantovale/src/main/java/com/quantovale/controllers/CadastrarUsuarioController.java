@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.quantovale.entities.Usuario;
 import com.quantovale.services.CadastrarUsuarioService;
-import com.quantovale.ultius.ValidarEmail;
-
+import com.quantovale.utius.ValidarEmail;
 
 @Controller
 public class CadastrarUsuarioController {
@@ -26,45 +25,49 @@ public class CadastrarUsuarioController {
 	private CadastrarUsuarioService cadastrarUsuarioService;
 	private ValidarEmail validarEmail;
 	private Usuario usuario = new Usuario();
-	
+
 	@RequestMapping(value = "/cadastrar-usuario", method = RequestMethod.POST)
-	public String preLogin(@RequestParam("nome") String nome, @RequestParam("email") String email,@RequestParam("password") String password,@RequestParam("confirmpassword") String confirmpassword, HttpServletRequest request, ModelMap modelMap,
-			String errorStatus, String message) throws InvalidAttributeValueException {
+	public String preLogin(@RequestParam("nome") String nome,
+			@RequestParam("email") String email,
+			@RequestParam("password") String password,
+			@RequestParam("confirmpassword") String confirmpassword,
+			HttpServletRequest request, ModelMap modelMap, String errorStatus,
+			String message) throws InvalidAttributeValueException {
 
 		List<String> erros = new ArrayList<String>();
 
-		if(nome.trim().equals("")){
+		if (nome.trim().equals("")) {
 			erros.add("*Preencha  nome corretamente");
 		}
 
-		if(!validarEmail.isEmailValid(email)){
+		if (!validarEmail.isEmailValid(email)) {
 			erros.add("*Preencha email corretamente");
 		}
 
-		if(password.length()>5 && !password.equals(confirmpassword)){
-			erros.add ("*Preencha senha incorreta");
+		if (password.length() > 5 && !password.equals(confirmpassword)) {
+			erros.add("*Preencha senha incorreta");
 		}
-		
+
 		usuario.setEmail(email);
-		if(cadastrarUsuarioService.validaEmailexistente(usuario)){
+		if (cadastrarUsuarioService.validaEmailexistente(usuario)) {
 			erros.add("Email ja cadastrado");
 		}
-		
-		if(erros.size()>0){
-			request.setAttribute("erros", erros);			
-			
+
+		if (erros.size() > 0) {
+			request.setAttribute("erros", erros);
+
 		}
-		
-		else{
+
+		else {
 			usuario.setNome(nome);
 			usuario.setEmail(email);
 			usuario.setData(new Date());
 			usuario.setPassword(password);
+			usuario.setHash("");
 			cadastrarUsuarioService.cadastrarUsuario(usuario);
-			
+
 			return "minhaconta";
 		}
-
 
 		return "cadastrar";
 

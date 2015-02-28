@@ -1,11 +1,12 @@
-package com.quantovale.controllers;
+package com.quantovale.utius;
 
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
-public class testeEmail {
+public class EnviarEmail {
 
-	public static void main(String[] args) throws EmailException {
+	public void sendEmail(String dest, String msg, String subject)
+			throws EmailException {
 
 		SimpleEmail email = new SimpleEmail();
 		// Utilize o hostname do seu provedor de email
@@ -14,13 +15,13 @@ public class testeEmail {
 		// Quando a porta utilizada não é a padrão (gmail = 465)
 		email.setSmtpPort(587);
 		// Adicione os destinatários
-		email.addTo("alexanrodrig@gmail.com", "Jose");
+		email.addTo(dest);
 		// Configure o seu email do qual enviará
 		email.setFrom("alexanrodrig@gmail.com", "Alexandre");
 		// Adicione um assunto
-		email.setSubject("Test message");
+		email.setSubject(subject);
 		// Adicione a mensagem do email
-		email.setMsg("This is a simple test of commons-email");
+		email.setMsg(msg);
 		// Para autenticar no servidor é necessário chamar os dois métodos
 		// abaixo
 		System.out.println("autenticando...");

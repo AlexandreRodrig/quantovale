@@ -64,11 +64,79 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String preLogin(HttpServletRequest request) {
+	public String logout(HttpServletRequest request) {
 
 		request.getSession().removeAttribute("usuario");
 
 		return "index";
+
+	}
+
+	@RequestMapping(value = "/sendEmailHash", method = RequestMethod.POST)
+	public String enviaHashParaEmail(HttpServletRequest request,
+			@RequestParam("email") String email) {
+
+		usuario = new Usuario();
+		usuario.setEmail(email);
+		loginService.sendEmailAlteracaoSenha(usuario);
+
+		return "index";
+
+	}
+
+	@RequestMapping(value = "/redirectalterarSenha", method = RequestMethod.GET)
+	public String redirectalterarSenha(HttpServletRequest request,
+			@RequestParam("email") String email,
+			@RequestParam("hash") String hash) {
+
+		usuario = new Usuario();
+		usuario.setEmail(email);
+		usuario.setHash(hash);
+
+		usuario = loginService.validaEmaileHash(usuario);
+
+		if (usuario != null) {
+			request.setAttribute("usuario", usuario);
+			return "alterarsenha";
+		}
+
+		return "index";
+
+	}
+
+	@RequestMapping(value = "/alterarSenha", method = RequestMethod.POST)
+	public String alterarSenha(HttpServletRequest request,
+			@RequestParam("id") String id,
+			@RequestParam("password") String password,
+			@RequestParam("confirmpassword") String confirmpassword) {
+		List<String> erros = new ArrayList<String>();
+		List<String> sucesso = new ArrayList<String>();
+		usuario = new Usuario();
+
+		if (password.trim().equals("")) {
+			erros.add("senha não informada");
+		} else if (!password.trim().equals(confirmpassword.trim())) {
+			erros.add("senha informada esta diferente de confirmar senha");
+		}
+
+		if (erros.size() > 0) {
+			request.setAttribute("erros", erros);
+		} else {
+			usuario.setPassword(password);
+			usuario.setId(Integer.parseInt(id));
+			usuario = loginService.alterarSenha(usuario, password);
+
+			if (usuario == null) {
+				erros.clear();
+				erros.add("Houve um erro ao alterar usuário por favor tente novamente");
+			} else {
+				sucesso.add("Senha alterada com sucesso");
+				request.setAttribute("sucesso", sucesso);
+			}
+
+		}
+
+		return "alterarsenha";
 
 	}
 

@@ -35,10 +35,12 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		registry.addViewController("welcome").setViewName("welcome");
 		registry.addViewController("admin").setViewName("admin");
 		registry.addViewController("minhaconta").setViewName("minhaconta");
-		registry.addViewController("grid_problemas").setViewName("grid_problemas");
+		registry.addViewController("grid_problemas").setViewName(
+				"grid_problemas");
 		registry.addViewController("login").setViewName("login");
 		registry.addViewController("cadastrar").setViewName("cadastrar");
 		registry.addViewController("index").setViewName("index");
+		registry.addViewController("alterarSenha").setViewName("alterarsenha");
 	}
 
 	@Bean
