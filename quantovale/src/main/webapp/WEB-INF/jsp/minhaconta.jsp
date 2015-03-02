@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <jsp:include page="header.jsp" />
+ <%@ page contentType="text/html; charset=UTF-8" %>
  	      	
      <div class="main" id="container">
 	 	<div class="content">	
@@ -7,6 +8,7 @@
 			        <section class="wrapper site-min-height">
         
                       <div class="showback">
+                      <br />
 						<h2>Minha conta</h2>
 					         <!-- USERS ONLINE SECTION -->
 							 
@@ -146,13 +148,13 @@
 							<form action="" method="post" name="" id="">
 									<h2>Meus Dados</h2>
 									 <div class="login-wrap">
-										<input type="text" class="formcontrol2" placeholder="Nome Completo" autofocus>
+										<input type="text" class="formcontrol2" value="${usuario.nome}" placeholder="Nome Completo" autofocus>
 										<br>
-										 <input type="text" class="formcontrol2" placeholder="Email" autofocus>
+										 <input type="text" class="formcontrol2" value="${usuario.email}" placeholder="Email" autofocus>
 										<br>
 																	
-											 <label> Masculino </label> <input type="radio" name="sexo" id="sexo" value="masculino" checked="">
-																 <label> Feminino </label> <input type="radio" name="sexo" id="sexo" value="feminino" checked="">
+											 <label> Masculino </label> <input type="radio" name="sexo" id="sexo" value="masculino" checked="checked">
+															   <label> Feminino </label> <input type="radio" name="sexo" id="sexo" value="feminino" >
 										
 										<br /><br />
 										<h2>Dados para contato</h2><br /><br />
@@ -162,10 +164,10 @@
 										 <h2>Localização</h2><br /><br />
 										 
 										 <label>Endereço</label>
-										 <input type="text" class="formcontrol2"  placeholder="complemento" autofocus>
+										 <input type="text" class="formcontrol2"  placeholder="rua,nº" autofocus>
 										  <br />
-										 <label>Nº</label>
-										 <input type="text" class="formcontrol2"style="width:15%"  placeholder="n°" autofocus>
+										 <label>Bairro</label>
+										 <input type="text" class="formcontrol2"style="width:15%"  placeholder="bairro" autofocus>
 										  <br />
 										  <label>Complemento</label>
 										 <input type="text" class="formcontrol2"  placeholder="complemento" autofocus>

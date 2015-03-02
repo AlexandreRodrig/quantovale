@@ -19,7 +19,7 @@
 <script type="text/javascript" src="${rootURL}resources/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/app.js"></script>
 
-<title>Free HostCompare Website Template | Home :: w3layouts</title>
+<title>Quanto vale seu problema</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="${rootURL}resources/css/style.css" rel="stylesheet" type="text/css" media="all"/>

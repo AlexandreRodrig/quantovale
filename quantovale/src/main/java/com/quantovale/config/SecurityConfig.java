@@ -56,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						"/index", "/grid_problemas", "/login", "/cadastrar",
 						"/cadastrar-usuario", "/logar", "/logout",
 						"/sendEmailHash", "/alterarSenha",
-						"/redirectalterarSenha").permitAll()
+						"/redirectalterarSenha", "/erro").permitAll()
 				// #4
 				.antMatchers("/admin", "/admin/**").hasRole("ADMIN")
 				// #6

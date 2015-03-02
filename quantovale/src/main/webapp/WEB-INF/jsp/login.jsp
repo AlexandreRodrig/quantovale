@@ -11,6 +11,7 @@ function valida(form) {
 		formlogin.email.focus();
 		return false;
 	}
+	
 
 	if (formlogin.password.value=="" || formlogin.password.value.length < 6) {
 		alert("Preencha a senha corretamente.");
@@ -37,6 +38,14 @@ function valida(form) {
 			       		 <div class="alert alert-danger">	  							
 		  					 <c:forEach  var="erros" items="${erros}">
 	   					 		<p align="center"><c:out value="${erros}"/></p>
+							</c:forEach> 							 		
+		  				</div>
+	  				</c:if>
+	  				
+	  				  <c:if test="${sucesso.size()>0}">
+			       		 <div class="alert alert-info">	  							
+		  					 <c:forEach  var="erros" items="${sucesso}">
+	   					 		<p align="center"><c:out value="${sucesso}"/></p>
 							</c:forEach> 							 		
 		  				</div>
 	  				</c:if>
@@ -75,7 +84,7 @@ function valida(form) {
 		          <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
 		              <div class="modal-dialog">
 		                  <div class="modal-content">
-		                  <form action="sendEmailHash" method="post">
+		                  <form action="sendEmailHash" method="post" name="recuperacao" >
 		                      <div class="modal-header">
 		                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		                          <h4 class="modal-title">Esqueceu sua senha ?</h4>
@@ -86,7 +95,7 @@ function valida(form) {
 		
 		                      </div>
 		                      <div class="modal-footer">
-		                          <button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
+		                          <button data-dismiss="modal" class="btn btn-danger" type="button" >Cancelar</button>
 		                          <button class="btn btn-theme" type="submit">Enviar</button>
 		                      </div>
 		                    </form>

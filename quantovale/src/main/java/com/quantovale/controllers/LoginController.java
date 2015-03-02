@@ -25,6 +25,8 @@ public class LoginController {
 	private LoginService loginService;
 
 	private Usuario usuario;
+	private List<String> erros = new ArrayList<String>();
+	private List<String> sucesso = new ArrayList<String>();
 
 	@RequestMapping(value = "/logar", method = RequestMethod.POST)
 	public String preLogin(@RequestParam("email") String email,
@@ -78,9 +80,18 @@ public class LoginController {
 
 		usuario = new Usuario();
 		usuario.setEmail(email);
-		loginService.sendEmailAlteracaoSenha(usuario);
-
-		return "index";
+		usuario = loginService.sendEmailAlteracaoSenha(usuario);
+		if (usuario == null) {
+			erros.clear();
+			erros.add("Email não encontrado, por favor tente novamente");
+			request.setAttribute("erros", erros);
+			return "login";
+		} else {
+			sucesso.clear();
+			sucesso.add("Email enviado com sucesso, verifique sua caixa de email para alterar sua senha. ");
+			request.setAttribute("sucesso", sucesso);
+			return "login";
+		}
 
 	}
 
@@ -98,9 +109,12 @@ public class LoginController {
 		if (usuario != null) {
 			request.setAttribute("usuario", usuario);
 			return "alterarsenha";
+		} else {
+			erros.clear();
+			erros.add("Email não encontrado, por favor tente novamente");
+			request.setAttribute("erros", erros);
+			return "alterarsenha";
 		}
-
-		return "index";
 
 	}
 

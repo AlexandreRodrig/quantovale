@@ -10,9 +10,16 @@ function valida(form) {
 		formlogin.password.focus();
 		return false;
 	}
+	
+	if (formlogin.confirmpassword.value=="" || formlogin.confirmpassword.value.length < 6) {
+		alert("Preencha a senha corretamente.");
+		formlogin.confirmpassword.focus();
+		return false;
+	}
+	
 	if (formlogin.password.value!=formlogin.confirmpassword.value) {
-		alert("A senha e a confirma��o tem de ser iguais.");
-		form.conf_senha.focus();
+		alert("A senha e a confirmação tem de ser iguais.");
+		form.confirmpassword.focus();
 		return false;
 	}
 
@@ -40,13 +47,17 @@ function valida(form) {
 	  				</c:if>
 	  				
 	  				 <c:if test="${sucesso.size()>0}">
-			       		 <div class="alert alert-succes">	  							
+	  				  	<div class="alert alert-info">	  							
 		  					 <c:forEach  var="sucesso" items="${sucesso}">
 	   					 		<p align="center"><c:out value="${sucesso}"/></p>
 							</c:forEach> 							 		
 		  				</div>
+		  				<a href="index" class="btn btn-theme btn-block" ><i class="fa fa-lock"></i> Ok</a> 
 	  				</c:if>
-		        
+	  		  <c:if test="${sucesso.size() == null}">
+			     
+	  			
+		       <c:if test="${erros.size()<=0 || erros == null}"> 
 		        <div class="login-wrap">
 		            <input type="password"  name="password" class="form-control" placeholder="Senha" autofocus>
 		            <br>
@@ -54,8 +65,12 @@ function valida(form) {
 		              <input type="hidden" name="id" class="form-control" value="${usuario.id}">
 		      
 		            <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> Alterar</button>
+		         </c:if> 	
 		         	<a href="index" class="btn btn-theme btn-block" style="background:red"><i class="fa fa-lock"></i> Cancelar</a>
-		        </div>   	
+		        </div>  
+		    </c:if>	    	
+		      
+		      
 		    </form>
 	  	</div>
 	</div> 
