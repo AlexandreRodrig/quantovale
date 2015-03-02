@@ -35,4 +35,10 @@ public class CadastrarUsuarioServiceImpl implements CadastrarUsuarioService {
 
 	}
 
+	@Override
+	public Usuario alterarUsuario(Usuario usuario) 
+	{
+		return usuarioDao.addUsuario(usuario);
+	}
+
 }

@@ -11,7 +11,21 @@
                       <br />
 						<h2>Minha conta</h2>
 					         <!-- USERS ONLINE SECTION -->
-							 
+							          <c:if test="${erros.size()>0}">
+			       		 <div class="alert alert-danger">	  							
+		  					 <c:forEach  var="erros" items="${erros}">
+	   					 		<p align="center"><c:out value="${erros}"/></p>
+							</c:forEach> 							 		
+		  				</div>
+	  				</c:if>
+	  				
+	  				  <c:if test="${sucesso.size()>0}">
+			       		 <div class="alert alert-info">	  							
+		  					 <c:forEach  var="erros" items="${sucesso}">
+	   					 		<p align="center"><c:out value="${sucesso}"/></p>
+							</c:forEach> 							 		
+		  				</div>
+	  				</c:if> 
 							 
 						<div class="form-panel">
 							<div class="row mtbox">
@@ -26,6 +40,8 @@
 									<div class="box1" id="box-2">
 										<span class="li_cloud"></span>
 										<h3>Meu cadastro</h3>
+										
+										
 									</div>
 										<p>Dados de cadastro </p>
 								</div>
@@ -145,12 +161,12 @@
 						</div>
 						
 						<div id="cont2">
-							<form action="" method="post" name="" id="">
+							<form action="alterar-usuario" method="post">
 									<h2>Meus Dados</h2>
 									 <div class="login-wrap">
-										<input type="text" class="formcontrol2" value="${usuario.nome}" placeholder="Nome Completo" autofocus>
+										<input type="text" class="formcontrol2" value="${usuario.nome}" name="nome" placeholder="Nome Completo" autofocus>
 										<br>
-										 <input type="text" class="formcontrol2" value="${usuario.email}" placeholder="Email" autofocus>
+										 <input type="text" class="formcontrol2" value="${usuario.email}" name="email" placeholder="Email" autofocus>
 										<br>
 																	
 											 <label> Masculino </label> <input type="radio" name="sexo" id="sexo" value="masculino" checked="checked">
@@ -159,18 +175,18 @@
 										<br /><br />
 										<h2>Dados para contato</h2><br /><br />
 										<label>Telefone</label>
-										 <input type="text" class="formcontrol2" style="width:30%" placeholder="Telefone para contato" autofocus>
+										 <input type="text" class="formcontrol2" value="${usuario.telefone}" name="telefone" style="width:30%" placeholder="Telefone para contato" autofocus>
 										
 										 <h2>Localização</h2><br /><br />
 										 
 										 <label>Endereço</label>
-										 <input type="text" class="formcontrol2"  placeholder="rua,nº" autofocus>
+										 <input type="text" class="formcontrol2" name="endereco" value="${usuario.endereco }"  placeholder="rua,nº" autofocus>
 										  <br />
 										 <label>Bairro</label>
-										 <input type="text" class="formcontrol2"style="width:15%"  placeholder="bairro" autofocus>
+										 <input type="text" class="formcontrol2"style="width:15%" value="${usuario.bairro }" name="bairro"  placeholder="bairro" autofocus>
 										  <br />
 										  <label>Complemento</label>
-										 <input type="text" class="formcontrol2"  placeholder="complemento" autofocus>
+										 <input type="text" class="formcontrol2" name="complemento" value="${usuario.complemento }"  placeholder="complemento" autofocus>
 										  <br />
 										  
 										  

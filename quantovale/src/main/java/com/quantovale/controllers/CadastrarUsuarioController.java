@@ -25,6 +25,9 @@ public class CadastrarUsuarioController {
 	private CadastrarUsuarioService cadastrarUsuarioService;
 	private ValidarEmail validarEmail;
 	private Usuario usuario = new Usuario();
+	private List<String> erros = new ArrayList<String>();
+	private List<String> sucesso = new ArrayList<String>();
+
 
 	@RequestMapping(value = "/cadastrar-usuario", method = RequestMethod.POST)
 	public String preLogin(@RequestParam("nome") String nome,
@@ -34,7 +37,7 @@ public class CadastrarUsuarioController {
 			HttpServletRequest request, ModelMap modelMap, String errorStatus,
 			String message) throws InvalidAttributeValueException {
 
-		List<String> erros = new ArrayList<String>();
+		
 
 		if (nome.trim().equals("")) {
 			erros.add("*Preencha  nome corretamente");
@@ -64,12 +67,87 @@ public class CadastrarUsuarioController {
 			usuario.setData(new Date());
 			usuario.setPassword(password);
 			usuario.setHash("");
-			cadastrarUsuarioService.cadastrarUsuario(usuario);
-
-			return "minhaconta";
+			usuario = cadastrarUsuarioService.alterarUsuario(usuario);
+			
+			if(usuario!=null){
+				sucesso.add("Alteração efetuada com sucesso");
+				
+			}else{
+				erros.add("Falha ao executar  alteração");
+			}
+			
 		}
 
-		return "cadastrar";
+		return "minhaconta";
+
+	}
+	
+	@RequestMapping(value = "/alterar-usuario", method = RequestMethod.POST)
+	public String alterarUsuario(@RequestParam("nome") String nome,
+			@RequestParam("email") String email,
+			@RequestParam("sexo") String sexo,
+			@RequestParam("telefone") String telefone,
+			@RequestParam("endereco") String endereco,
+			@RequestParam("bairro") String bairro,
+			@RequestParam("complemento") String complemento,
+			HttpServletRequest request, ModelMap modelMap, String errorStatus,
+			String message) throws InvalidAttributeValueException {
+
+		List<String> erros = new ArrayList<String>();
+
+		if (nome.trim().equals("")) {
+			erros.add("*Preencha  nome corretamente");
+		}
+
+		if (!validarEmail.isEmailValid(email)) {
+			erros.add("*Preencha email corretamente");
+		}
+		
+		if (telefone.trim().equals("")) {
+			erros.add("*Preencha  telefone corretamente");
+		}
+
+		if (endereco.trim().equals("")) {
+			erros.add("*Preencha  endereço corretamente");
+		}
+		
+		if (bairro.trim().equals("")) {
+			erros.add("*Preencha  bairro corretamente");
+		}
+		
+		if (complemento.trim().equals("")) {
+			erros.add("*Preencha  complemento corretamente");
+		}
+		
+		if (erros.size() > 0) {
+			request.setAttribute("erros", erros);
+
+		}
+
+		else {
+			usuario = new Usuario();
+			usuario = (Usuario) request.getSession().getAttribute("usuario");
+			usuario.setNome(nome);
+			usuario.setEmail(email);
+			usuario.setTelefone(telefone);
+			usuario.setEndereco(endereco);
+			usuario.setBairro(bairro);
+			usuario.setComplemento(complemento);
+			usuario = cadastrarUsuarioService.alterarUsuario(usuario);
+			if(usuario!=null){
+				sucesso.add("Alteração efetuada com sucesso");
+				request.setAttribute("sucesso", sucesso);
+			}else{
+				erros.clear();
+				erros.add("Erro ao efetuar alteração, por favor tente novamente");
+				request.setAttribute("erros", erros);
+			}
+			
+
+			
+		}
+
+		return "minhaconta";
 
 	}
 }

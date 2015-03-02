@@ -31,6 +31,91 @@ public class Usuario {
 
 	@Column(name = "hash")
 	private String hash;
+	
+	@Column(name = "sexo")
+	private String sexo;
+	
+	@Column(name = "telefone")
+	private String telefone;
+	
+	@Column(name = "endereco")
+	private String endereco ;
+	
+	@Column(name = "bairro")
+	private String bairro ;
+	
+	/**
+	 * @return the sexo
+	 */
+	public String getSexo() {
+		return sexo;
+	}
+
+	/**
+	 * @param sexo the sexo to set
+	 */
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	/**
+	 * @return the telefone
+	 */
+	public String getTelefone() {
+		return telefone;
+	}
+
+	/**
+	 * @param telefone the telefone to set
+	 */
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	/**
+	 * @return the endereco
+	 */
+	public String getEndereco() {
+		return endereco;
+	}
+
+	/**
+	 * @param endereco the endereco to set
+	 */
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	/**
+	 * @return the bairro
+	 */
+	public String getBairro() {
+		return bairro;
+	}
+
+	/**
+	 * @param bairro the bairro to set
+	 */
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	/**
+	 * @return the complemento
+	 */
+	public String getComplemento() {
+		return complemento;
+	}
+
+	/**
+	 * @param complemento the complemento to set
+	 */
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	@Column(name = "complemento")
+	private String complemento ;
 
 	/**
 	 * @return the id
