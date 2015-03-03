@@ -1,6 +1,77 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <jsp:include page="header.jsp" />
  <%@ page contentType="text/html; charset=UTF-8" %>
+ 
+ <script>
+ function valida(form) {
+		if (formAlterarCadastro.nome.value=="") {
+			alert("Preencha o nome corretamente.");
+			form.nome.focus();
+		return false;
+		}
+		var filtro_mail = /^.+@.+\..{2,3}$/
+		if (!filtro_mail.test(formAlterarCadastro.email.value) || formAlterarCadastro.email.value=="") {
+			alert("Preencha o e-mail corretamente.");
+			formAlterarCadastro.email.focus();
+			return false;
+		}
+	
+		if (formAlterarCadastro.telefone.value=="") {
+			alert("Preenchao telefone corretamente.");
+			formAlterarCadastro.idade.focus();
+		return false;
+		}
+	
+		if (formAlterarCadastro.endereco.value=="" || formAlterarCadastro.endereco.value.length < 8) {
+			alert("Preencha o endereço corretamente.");
+			form.endereco.focus();
+			return false;
+		}
+	
+		if (formAlterarCadastro.telefone.value=="") {
+			alert("Preencha o telefone corretamente.");
+			formAlterarCadastro.telefone.focus();
+			return false;
+		}
+	
+		if (formAlterarCadastro.complemento.value=="") {
+			alert("Complemneto corretamente");
+			formAlterarCadastro.complemento.focus();
+			return false;
+		}
+
+	}
+ 
+ 
+ $(document).on('change', '#option_estado', function() { 
+	    //$('#opt-lessons').change(function(event) {
+	        var _estadoselected = $("#option_estado option:selected").val();
+	        
+	         $.ajax({
+         	url: '${pageContext.request.contextPath}/carregaCidade',
+         	data: {estado: _estadoselected},
+         	type: "GET",            	
+         	contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				success: function(response) {					
+					$('#cont2').html($(response).find('#cont2'));		    	
+		        	$('#cont2').fadeOut(200).fadeIn(200);		        				        	
+    			}
+	         });    		
+	    });
+	    $(document).ready(function() {
+	    	    	
+	        $.ajax({	        	 
+           	url: '${pageContext.request.contextPath}/carregaEstado',            	
+           	type: "GET",
+           	contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				success: function(response) {
+					$('#cont2').html($(response).find('#cont2'));		    	
+		        	$('#cont2').fadeOut(200).fadeIn(200);		        				        	
+      			}
+	         });    		
+   		})
+</script>
+ 
  	      	
      <div class="main" id="container">
 	 	<div class="content">	
@@ -161,23 +232,28 @@
 						</div>
 						
 						<div id="cont2">
-							<form action="alterar-usuario" method="post">
+							<form action="alterar-usuario" name="formAlterarCadastro" method="post" onsubmit="return valida(this);">
 									<h2>Meus Dados</h2>
 									 <div class="login-wrap">
 										<input type="text" class="formcontrol2" value="${usuario.nome}" name="nome" placeholder="Nome Completo" autofocus>
 										<br>
 										 <input type="text" class="formcontrol2" value="${usuario.email}" name="email" placeholder="Email" autofocus>
 										<br>
-																	
-											 <label> Masculino </label> <input type="radio" name="sexo" id="sexo" value="masculino" checked="checked">
-															   <label> Feminino </label> <input type="radio" name="sexo" id="sexo" value="feminino" >
-										
-										<br /><br />
-										<h2>Dados para contato</h2><br /><br />
+											
+											<c:if test="${usuario.sexo == 'm' || usuario == null }">
+												 <label> Masculino </label> <input type="radio" name="sexo" id="sexo" value="m" checked="checked">	
+												 <label> Feminino </label> <input type="radio" name="sexo" id="sexo" value="f"  >											
+											</c:if>	
+											<c:if test="${usuario.sexo == 'f'}">	
+												<label> Masculino </label> <input type="radio" name="sexo" id="sexo" value="m" >				
+												 <label> Feminino </label> <input type="radio" name="sexo" id="sexo" value="f" checked="checked" >
+											</c:if>
+										<br />
+										<h2>Dados para contato</h2>
 										<label>Telefone</label>
-										 <input type="text" class="formcontrol2" value="${usuario.telefone}" name="telefone" style="width:30%" placeholder="Telefone para contato" autofocus>
+										 <input type="text" class="formcontrol2" value="${usuario.telefone}" id="telefone" name="telefone" style="width:30%" placeholder="Telefone para contato" autofocus>
 										
-										 <h2>Localização</h2><br /><br />
+										 <h2>Localização</h2>
 										 
 										 <label>Endereço</label>
 										 <input type="text" class="formcontrol2" name="endereco" value="${usuario.endereco }"  placeholder="rua,nº" autofocus>
@@ -193,53 +269,35 @@
 										<label></label>	
 										<div class="btn-group">
 												
-												<select class="btn btn-theme dropdown-toggle" >
-												<option value="0">Estado</option>
-												<option value="16">Alagoas</option>
-												<option value="26">Amapá</option>
-												<option value="15">Amazonas</option>
-												<option value="4">Bahia</option>
-												<option value="8">Ceará</option>
-												<option value="20">Distrito Federal</option>
-												<option value="14">Espírito Santo</option>
-												<option value="12">Goiás</option>
-												<option value="10">Maranhão</option>
-												<option value="19">Mato Grosso</option>
-												<option value="21">Mato Grosso do Sul</option>
-												<option value="2">Minas Gerais</option>
-												<option value="9">Pará</option>
-												<option value="13">Paraíba</option>
-												<option value="6">Paraná</option>
-												<option value="7">Pernambuco</option>
-												<option value="17">Piauí</option>
-												<option value="3">Rio de Janeiro</option>
-												<option value="18">Rio Grande do Norte</option>
-												<option value="5">Rio Grande do Sul</option>
-												<option value="23">Rondônia</option>
-												<option value="27">Roraima</option>
-												<option value="11">Santa Catarina</option>
-												<option value="1">São Paulo</option>
-												<option value="22">Sergipe</option>
-												<option value="24">Tocantins</option>
+												<select class="btn btn-theme dropdown-toggle" name="estado" id="option_estado" >
+												<option value="0">Estado</option>											
+												<c:forEach  items="${listaEstados}" var="estado" >  
+													<option value="${estado.cod_estados }"<c:if test="${estadoselecionado == estado.cod_estados}">selected="selected"</c:if>  >${estado.nome}</option> 				
+																									
+												</c:forEach> 
 											</select>
 										
 										</div>	
 											<!-- pegar depois no olx as regioes de acordo com a cidade-->
 											
-											<div class="btn-group">
+											<div class="btn-group" id="cidade">
 												<!-- pegar depois no olx as regioes de acordo com a cidade-->
 													
-													<select class="btn btn-theme dropdown-toggle" >
-													<option value="0">Região</option>
-													<option value="16">Grande Campinas</option>
-													<option value="26">São paulo e Regiao</option>
-													
+												<select class="btn btn-theme dropdown-toggle" name="cidade" id="combo_cidade" >
+													<option value="0">Selecione</option>
+													<c:forEach  items="${listaCidades}" var="cidade" > 
+													 
+														<option value="${cidade.cod_cidades }"<c:if test="${usuario.cidade == cidade.cod_cidades}">selected="selected"</c:if> >${cidade.nome}</option> 
+													</c:forEach> 
 												</select>
 											</div>
 										
 									</div>
-								 <button type="submit" class="btn btn-round btn-success">Alterar</button>
-								 <button type="submit" class="btn btn-round btn-danger">Cancelar</button>
+								<div style="margin-left: 20px;">
+								 	 <button type="submit" class="btn btn-round btn-success">Alterar</button>
+								 	 <a href="minhaconta" class="btn btn-round btn-danger">Cancelar</a>
+									
+								</div>	
 							</form>		
 						</div>
 					</div>

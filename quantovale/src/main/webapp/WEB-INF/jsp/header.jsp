@@ -8,14 +8,13 @@
   
 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="author" content="Movile" />
+  <meta name="author" content="" />
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <meta name="robots" content="index,follow" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <link href="${rootURL}resources/bootstrap/css/bootstrap.css" media="screen" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="${rootURL}resources/jquery/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="${rootURL}resources/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/app.js"></script>
 
@@ -26,7 +25,7 @@
 <link href="${rootURL}resources/css/slider.css" rel="stylesheet" type="text/css" media="all"/>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600,700,400' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="${rootURL}resources/js/jquery.min.js"></script>
+<script type="text/javascript" src="${rootURL}resources/js/jquery-1.11.2.js"></script>
 <script src="${rootURL}resources/js/jquery.easydropdown.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/script.js"></script>
 <script type="text/javascript" src="${rootURL}resources/js/jquery.nivo.slider.js"></script>
@@ -40,6 +39,10 @@
 <link href="${rootURL}resources/assets/css/style-responsive.css" rel="stylesheet">
 <script src="${rootURL}resources/assets/js/bootstrap.min.js"></script>
 <script src="${rootURL}resources/js/jquery.validate.js" type="text/javascript"></script>
+<script src="${rootURL}resources/js/jquery.maskedinput.min.js" type="text/javascript"></script>
+
+
+
 	
  <script type="text/javascript">
 
@@ -61,6 +64,13 @@
 			});
  
 });
+ 
+ jQuery(function($){
+	   $("#date").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
+	   $("#telefone").mask("(99) 99999-9999");
+	   $("#tin").mask("99-9999999");
+	   $("#ssn").mask("999-99-9999");
+	});
    
 	
     </script> 

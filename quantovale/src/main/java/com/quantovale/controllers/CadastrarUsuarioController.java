@@ -90,6 +90,9 @@ public class CadastrarUsuarioController {
 			@RequestParam("endereco") String endereco,
 			@RequestParam("bairro") String bairro,
 			@RequestParam("complemento") String complemento,
+			@RequestParam("estado") String estado,
+			@RequestParam("cidade") String cidade,
+					
 			HttpServletRequest request, ModelMap modelMap, String errorStatus,
 			String message) throws InvalidAttributeValueException {
 
@@ -132,9 +135,13 @@ public class CadastrarUsuarioController {
 			usuario.setTelefone(telefone);
 			usuario.setEndereco(endereco);
 			usuario.setBairro(bairro);
+			usuario.setSexo(sexo);
 			usuario.setComplemento(complemento);
+			usuario.setEstado(estado);
+			usuario.setCidade(cidade);
 			usuario = cadastrarUsuarioService.alterarUsuario(usuario);
 			if(usuario!=null){
+				sucesso.clear();
 				sucesso.add("Alteração efetuada com sucesso");
 				request.setAttribute("sucesso", sucesso);
 			}else{

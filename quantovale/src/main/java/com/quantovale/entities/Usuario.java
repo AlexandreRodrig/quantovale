@@ -44,11 +44,45 @@ public class Usuario {
 	@Column(name = "bairro")
 	private String bairro ;
 	
+	@Column(name ="estado")
+	private String estado;
+	
+	@Column(name="cidade")
+	private String cidade;
+	
 	/**
 	 * @return the sexo
 	 */
 	public String getSexo() {
 		return sexo;
+	}
+
+	/**
+	 * @return the estado
+	 */
+	public String getEstado() {
+		return estado;
+	}
+
+	/**
+	 * @param estado the estado to set
+	 */
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	/**
+	 * @return the cidade
+	 */
+	public String getCidade() {
+		return cidade;
+	}
+
+	/**
+	 * @param cidade the cidade to set
+	 */
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
 	}
 
 	/**
