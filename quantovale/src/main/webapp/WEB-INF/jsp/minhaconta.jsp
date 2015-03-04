@@ -248,8 +248,10 @@
 							<form action="alterar-usuario" name="formAlterarCadastro" method="post" onsubmit="return valida(this);">
 									<h2>Meus Dados</h2>
 									 <div class="login-wrap">
+									 	<label>Nome</label>
 										<input type="text" class="formcontrol2" value="${usuario.nome}" name="nome" placeholder="Nome Completo" autofocus>
 										<br>
+										<label>Email</label>
 										 <input type="text" class="formcontrol2" value="${usuario.email}" name="email" placeholder="Email" autofocus>
 										<br>
 											
