@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@ page contentType="text/html; charset=UTF-8" %>
  <jsp:include page="header.jsp" />		      	
      <div class="main" id="container">
 	 	<div class="content">	
@@ -30,29 +31,29 @@
 										<select class="btn btn-theme dropdown-toggle" >
 										<option value="0">Estado</option>
 										<option value="16">Alagoas</option>
-										<option value="26">Amapá</option>
+										<option value="26">AmapÃ¡</option>
 										<option value="15">Amazonas</option>
 										<option value="4">Bahia</option>
-										<option value="8">Ceará</option>
+										<option value="8">CearÃ¡</option>
 										<option value="20">Distrito Federal</option>
-										<option value="14">Espírito Santo</option>
-										<option value="12">Goiás</option>
-										<option value="10">Maranhão</option>
+										<option value="14">EspÃ­rito Santo</option>
+										<option value="12">GoiÃ¡s</option>
+										<option value="10">MaranhÃ£o</option>
 										<option value="19">Mato Grosso</option>
 										<option value="21">Mato Grosso do Sul</option>
 										<option value="2">Minas Gerais</option>
-										<option value="9">Pará</option>
-										<option value="13">Paraíba</option>
-										<option value="6">Paraná</option>
+										<option value="9">ParÃ¡</option>
+										<option value="13">ParaÃ­ba</option>
+										<option value="6">ParanÃ¡</option>
 										<option value="7">Pernambuco</option>
-										<option value="17">Piauí</option>
+										<option value="17">PiauÃ­</option>
 										<option value="3">Rio de Janeiro</option>
 										<option value="18">Rio Grande do Norte</option>
 										<option value="5">Rio Grande do Sul</option>
-										<option value="23">Rondônia</option>
+										<option value="23">RondÃ´nia</option>
 										<option value="27">Roraima</option>
 										<option value="11">Santa Catarina</option>
-										<option value="1">São Paulo</option>
+										<option value="1">SÃ£o Paulo</option>
 										<option value="22">Sergipe</option>
 										<option value="24">Tocantins</option>
 									</select>
@@ -64,9 +65,9 @@
 										<!-- pegar depois no olx as regioes de acordo com a cidade-->
 											
 											<select class="btn btn-theme dropdown-toggle" >
-											<option value="0">Região</option>
+											<option value="0">RegiÃ£o</option>
 											<option value="16">Grande Campinas</option>
-											<option value="26">São paulo e Regiao</option>
+											<option value="26">SÃ£o paulo e Regiao</option>
 											
 										</select>
 									</div>
@@ -78,17 +79,17 @@
 									<label>Titulo</label><br />
 									<input type="text" class="formcontrol2" id="exampleInputPassword2" placeholder="Titulo">
 									<br />
-									<label>Descrição</label>
-								    <input type="text" class="formcontrol2" id="exampleInputPassword2" placeholder="Começa com ..">
+									<label>DescriÃ§Ã£o</label>
+								    <input type="text" class="formcontrol2" id="exampleInputPassword2" placeholder="ComeÃ§a com ..">
 							  </div>
 							  <button type="submit" class="btn btn-theme">Buscar</button>
 						  </form>
 						  <br /> <br />
-						  <a href="novo_problema.html" class="btn btn-round btn-danger">Quero cadastrar o meu problema</a>
+						  <a href="novo-problema" class="btn btn-round btn-danger">Quero cadastrar o meu problema</a>
 						
 
 						</div><!-- /form-panel -->	 
-					  <!--FALTA A PAGINAÇÃO -->
+					  <!--FALTA A PAGINAÃÃO -->
 					    <table class="table table-bordered table-striped table-condensed">
                               <thead>
 							  
@@ -96,9 +97,9 @@
 								  
 									  <th>Imagen</th>
 									  <th>Titulo</th>
-									  <th class="numeric">Descrição</th>
+									  <th class="numeric">DescriÃ§Ã£o</th>
 									  <th class="numeric">Estado/cidade</th>
-									  <th class="numeric">Valor disponível</th>
+									  <th class="numeric">Valor disponÃ­vel</th>
 									  <th class="numeric">Enviar proposta </th>
 								  
                               </tr>
@@ -108,8 +109,8 @@
 							  
                                <tr>
                                   <td><a href="participante.html"><img class="img-circle" src="assets/img/ui-sherman.jpg" width="50px" height="50px" align=""></a></td>
-                                  <td>Preciso de um garçom urgente.</td>
-                                  <td class="numeric">Auxiliar de produção</td>
+                                  <td>Preciso de um garÃ§om urgente.</td>
+                                  <td class="numeric">Auxiliar de produÃ§Ã£o</td>
 								  <td>SP/Campinas.</td>
                                   <td class="numeric">0,00</td>
 								  <td class="numeric"><button class="btn btn-round btn-success" data-toggle="modal" data-target="#myModal">
@@ -120,8 +121,8 @@
 							  
 							     <tr>
                                   <td><a href="participante.html"><img class="img-circle" src="assets/img/ui-sherman.jpg" width="50px" height="50px" align=""></a></td>
-                                  <td>Preciso de um garçom urgente.</td>
-                                  <td class="numeric">Auxiliar de produção</td>
+                                  <td>Preciso de um garÃ§om urgente.</td>
+                                  <td class="numeric">Auxiliar de produÃ§Ã£o</td>
 								  <td>SP/Campinas.</td>
                                   <td class="numeric">0,00</td>
 								  <td class="numeric"><button class="btn btn-round btn-success" data-toggle="modal" data-target="#myModal">
@@ -131,8 +132,8 @@
 							  
 							     <tr>
                                   <td><a href="participante.html"><img class="img-circle" src="assets/img/ui-sherman.jpg" width="50px" height="50px" align=""></a></td>
-                                  <td>Preciso de um garçom urgente.</td>								  
-                                  <td class="numeric">Auxiliar de produção</td>
+                                  <td>Preciso de um garÃ§om urgente.</td>								  
+                                  <td class="numeric">Auxiliar de produÃ§Ã£o</td>
 								  <td>SP/Campinas.</td>
                                   <td class="numeric">0,00</td>
 								   <td class="numeric"><button class="btn btn-round btn-success" data-toggle="modal" data-target="#myModal">
@@ -144,7 +145,7 @@
 							     <tr>
                                   <td><a href="participante.html"><img class="img-circle" src="assets/img/ui-sherman.jpg" width="50px" height="50px" align=""></a></td>
                                   <td>RODRIGO MENDES.</td>								 
-                                  <td class="numeric">Auxiliar de produção</td>
+                                  <td class="numeric">Auxiliar de produÃ§Ã£o</td>
 								   <td>SP/Campinas.</td>
                                   <td class="numeric">0,00</td>
 								    <td class="numeric"><button class="btn btn-round btn-success" data-toggle="modal" data-target="#myModal">
@@ -156,7 +157,7 @@
 							     <tr>
                                   <td><a href="participante.html"><img class="img-circle" src="assets/img/ui-sherman.jpg" width="50px" height="50px" align=""></a></td>
                                   <td>RODRIGO MENDES.</td>								  
-                                  <td class="numeric">Auxiliar de produção</td>
+                                  <td class="numeric">Auxiliar de produÃ§Ã£o</td>
 								  <td>SP/Campinas.</td>
                                   <td class="numeric">0,00</td>
 								    <td class="numeric"><button class="btn btn-round btn-danger" data-toggle="modal" data-target="#myModalreeviada">
@@ -212,7 +213,7 @@
 							    <label>Email </label>
 							   <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Telefone para contato">
 							   <br />
-							   <label>Descrição do problema </label>
+							   <label>DescriÃ§Ã£o do problema </label>
 								<textarea rows="4" cols="50" class="form-control"></textarea>	  
 							   </form>
 						      </div>

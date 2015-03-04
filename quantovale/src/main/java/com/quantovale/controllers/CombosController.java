@@ -19,7 +19,7 @@ import com.quantovale.entities.Usuario;
 import com.quantovale.services.CarregaComboService;
 
 @Controller
-public class ContaController {
+public class CombosController {
 
 	@Autowired
 	private CarregaComboService carregaComboService;
