@@ -35,10 +35,23 @@
 		}
 	
 		if (formAlterarCadastro.complemento.value=="") {
-			alert("Complemneto corretamente");
+			alert("Preencha complemento corretamente");
 			formAlterarCadastro.complemento.focus();
 			return false;
 		}
+		
+		if (formAlterarCadastro.combo_cidade.value=="") {
+			alert("Selecione uma cidade");
+			formAlterarCadastro.combo_cidade.focus();
+			return false;
+		}
+		
+		if (formAlterarCadastro.option_estado.value=="") {
+			alert("Selecione um estado");
+			formAlterarCadastro.option_estado.focus();
+			return false;
+		}
+		
 
 	}
  
@@ -270,9 +283,20 @@
 										<div class="btn-group">
 												
 												<select class="btn btn-theme dropdown-toggle" name="estado" id="option_estado" >
-												<option value="0">Estado</option>											
-												<c:forEach  items="${listaEstados}" var="estado" >  
-													<option value="${estado.cod_estados }"<c:if test="${estadoselecionado == estado.cod_estados}">selected="selected"</c:if>  >${estado.nome}</option> 				
+												<option value="">Estado</option>											
+												<c:forEach  items="${listaEstados}" var="estado" > 
+													
+														<c:choose>
+	    													<c:when test="${estadoselecionado!= null}">
+	  														 	<option value="${estado.cod_estados }"<c:if test="${estadoselecionado == estado.cod_estados}">selected="selected"</c:if>  >${estado.nome}</option> 
+	  														</c:when>
+														 <c:when test="${usuario.estado!='' && estadoselecionado==null }">
+																<option value="${estado.cod_estados }"<c:if test="${usuario.estado == estado.cod_estados}">selected="selected"</c:if>  >${estado.nome}</option> 																			 
+														</c:when>
+												  		  <c:otherwise>
+												     		 	<option value="${estado.cod_estados }">${estado.nome}</option> 																			 
+												   		 </c:otherwise>
+														</c:choose>
 																									
 												</c:forEach> 
 											</select>
@@ -284,9 +308,9 @@
 												<!-- pegar depois no olx as regioes de acordo com a cidade-->
 													
 												<select class="btn btn-theme dropdown-toggle" name="cidade" id="combo_cidade" >
-													<option value="0">Selecione</option>
-													<c:forEach  items="${listaCidades}" var="cidade" > 
-													 
+													<option value="">Selecione</option>
+													<c:forEach  items="${listaCidades}" var="cidade" >
+	
 														<option value="${cidade.cod_cidades }"<c:if test="${usuario.cidade == cidade.cod_cidades}">selected="selected"</c:if> >${cidade.nome}</option> 
 													</c:forEach> 
 												</select>

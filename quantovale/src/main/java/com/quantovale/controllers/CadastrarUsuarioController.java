@@ -122,6 +122,13 @@ public class CadastrarUsuarioController {
 			erros.add("*Preencha  complemento corretamente");
 		}
 		
+		if (cidade.trim().equals("")) {
+			erros.add("*Preencha  cidade corretamente");
+		}
+		if (estado.trim().equals("")) {
+			erros.add("*Preencha  estado corretamente");
+		}
+		
 		if (erros.size() > 0) {
 			request.setAttribute("erros", erros);
 
