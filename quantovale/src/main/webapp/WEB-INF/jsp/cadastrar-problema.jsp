@@ -48,10 +48,10 @@
 							 
 							 
 						<div class="form-panel">
-						  <form  role="form">
+						  <form  role="form" action="addproblema" method="post">
 							<h5></i>Categoria:</h5>
 							<div class="btn-group">
-								<select class="btn btn-theme dropdown-toggle" >
+								<select class="btn btn-theme dropdown-toggle" name="categoria" >
 									<option value="#">Selecione</option>
 									<c:forEach  items="${listaCategorias}" var="categorias" > 
 													
@@ -106,32 +106,29 @@
 							  <div class="form-group">
 								<BR /> 
 									<label>Titulo</label><br />
-									<input type="text" class="formcontrol2" id="exampleInputPassword2" placeholder="Titulo">
-									<br />
-									<label>Descrição</label>
-								    <input type="text" class="formcontrol2" id="exampleInputPassword2" placeholder="Começa com ..">
+									<input type="text" class="formcontrol2" id="exampleInputPassword2" name="titulo" placeholder="Titulo">
 									<br />
 									<label>Adicionar uma imagem</label>
-								    <input type="file" class="formcontrol2" id="exampleInputPassword2" placeholder="Começa com ..">
+								    <input type="file" class="formcontrol2" id="exampleInputPassword2" name="imagem" placeholder="Começa com ..">
 									<br />
 									<label>Uma breve descrição</label>
-									<textarea rows="4" cols="50" class="form-control" style="width:50%"></textarea>
+									<textarea rows="4" cols="50" class="form-control" name="descricao" style="width:50%" placeholder="Escreva uma breve descrição do seu problema"></textarea>
 									<br />
 									
 									<label>Telefone para contato</label>
-										<input type="text" class="formcontrol2" id="exampleInputPassword2" placeholder="DD + 999999 ..">
+										<input type="text" class="formcontrol2" name="telefone" id="exampleInputPassword2" placeholder="DD + 999999 ..">
 
 									<br />
 									<label>Eu disponibilizo de ?</label>
-									<input type="text" class="formcontrol2" id="exampleInputPassword2" placeholder="valor em reais">
+									<input type="text" class="formcontrol2" name="valor" id="exampleInputPassword2" placeholder="valor em reais">
 
 							  </div>
 							  
 							  
 							  <div class="form-inline">
-								<button type="submit" class="btn btn-round btn-success">Publicar</button>
-								<button type="submit" class="btn btn-round btn-primary">Preview</button>
-								<button type="submit" class="btn btn-round btn-danger">Cacelar</button>
+								<button type="submit" class="btn btn-round btn-success">Salvar</button>
+								<button type="#" class="btn btn-round btn-primary">Preview</button>
+								<button type="grid-problemas" class="btn btn-round btn-danger">Cancelar</button>
 							  </div>
 						  </form>
 						</div><!-- /form-panel -->	 

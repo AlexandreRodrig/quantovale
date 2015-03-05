@@ -77,12 +77,12 @@ public class CadastrarProblemaController {
 
 	}
 	
-	@RequestMapping(value = "/addproblema", method = RequestMethod.GET)
+	@RequestMapping(value = "/addproblema", method = RequestMethod.POST)
 	public String addproblema(HttpServletRequest request,@RequestParam("categoria") String idcategoria, 
 			@RequestParam("estado") String estado,
 			@RequestParam("cidade") String cidade,
 			@RequestParam("titulo")String titulo,
-			@RequestParam("imagem")String imagem,
+			@RequestParam(required = false)String imagem ,
 			@RequestParam("descricao")String descricao,
 			@RequestParam("telefone")String telefone,
 			@RequestParam("valor")String valor			
