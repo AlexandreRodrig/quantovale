@@ -49,6 +49,9 @@ public class CadastrarProblemaController {
 	private List<Categoria> listaCategorias;
 
 	private List<String>erros = new ArrayList<String>();
+	
+	private List<String>sucesso = new ArrayList<String>();
+
 
 	@RequestMapping(value = "/novo-problema", method = RequestMethod.GET)
 	public String carregarCombo(HttpServletRequest request){ 
@@ -117,6 +120,14 @@ public class CadastrarProblemaController {
 			problema.setTitulo(titulo.getString());
 						
 			FileItem img = (FileItem) items.get(4);
+			if(!" image/gif image/jpeg image/png ".contains(img.getContentType())){
+				erros.add("Formato invalido de imagem.");
+			}
+			int tamanhoMaximo = 1024 * 500;
+			if(img.getSize()> tamanhoMaximo){
+				erros.add("Tamanho do arquivo enviado é maior que o limite");
+			}
+			
 			try {
 				byte[] bytes = read(img);
 				problema.setImagem(bytes);
@@ -145,11 +156,31 @@ public class CadastrarProblemaController {
 			// tratar erro
 		}
 
+		if(erros.size()>0){
+			request.setAttribute("erros", erros);
+		}else{
+			erros.clear();
+			problema = new Problema();
+			problema = problemaservice.addProblema(problema);
+			
+			if(problema == null){
+				erros.add("Erro ao inserir seu problema por favor tente mais tarde");
+			}else{
+				sucesso.clear();
+				sucesso.add("Problema cadastrado com sucesso boa sorte !");
+				request.setAttribute("sucesso", sucesso);
+			}
+		
+		}
+		
+		if(erros.size()>0){
+			request.setAttribute("erros", erros);
+			return "cadastrar-problema";
+		}else{
+			return "grid_problemas";
+		}
 
-		problemaservice.addProblema(problema);
-
-
-		return "cadastrar-problema";
+		
 
 	}
 	

@@ -9,7 +9,22 @@
                       <div class="showback">
 						<h2>Problemas</h2>
 					         <!-- USERS ONLINE SECTION -->
-							 
+						
+					<c:if test="${erros.size()>0}">
+			       		 <div class="alert alert-danger">	  							
+		  					 <c:forEach  var="erros" items="${erros}">
+	   					 		<p align="center"><c:out value="${erros}"/></p>
+							</c:forEach> 							 		
+		  				</div>
+	  				</c:if>
+	  				
+	  				  <c:if test="${sucesso.size()>0}">
+			       		 <div class="alert alert-info">	  							
+		  					 <c:forEach  var="erros" items="${sucesso}">
+	   					 		<p align="center"><c:out value="${sucesso}"/></p>
+							</c:forEach> 							 		
+		  				</div>
+	  				</c:if>	 
 							 
 						<div class="form-panel">
 						  <form  role="form">

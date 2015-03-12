@@ -95,7 +95,7 @@
                       <br />
 						<h2>Minha conta</h2>
 					         <!-- USERS ONLINE SECTION -->
-							          <c:if test="${erros.size()>0}">
+			      <c:if test="${erros.size()>0}">
 			       		 <div class="alert alert-danger">	  							
 		  					 <c:forEach  var="erros" items="${erros}">
 	   					 		<p align="center"><c:out value="${erros}"/></p>
