@@ -255,7 +255,7 @@
 										 <input type="text" class="formcontrol2" value="${usuario.email}" name="email" placeholder="Email" autofocus>
 										<br>
 											
-											<c:if test="${usuario.sexo == 'm' || usuario == null || usuario.sexo=''}">
+											<c:if test="${usuario.sexo == 'm' || usuario == null || usuario.sexo==''}">
 												 <label> Masculino </label> <input type="radio" name="sexo" id="sexo" value="m" checked="checked">	
 												 <label> Feminino </label> <input type="radio" name="sexo" id="sexo" value="f"  >											
 											</c:if>	

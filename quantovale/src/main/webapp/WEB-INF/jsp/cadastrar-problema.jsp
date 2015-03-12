@@ -48,7 +48,7 @@
 							 
 							 
 						<div class="form-panel">
-						  <form  role="form" action="addproblema" method="post">
+						  <form  action="addproblema" method="post" enctype="multipart/form-data" >
 							<h5></i>Categoria:</h5>
 							<div class="btn-group">
 								<select class="btn btn-theme dropdown-toggle" name="categoria" >
@@ -109,7 +109,7 @@
 									<input type="text" class="formcontrol2" id="exampleInputPassword2" name="titulo" placeholder="Titulo">
 									<br />
 									<label>Adicionar uma imagem</label>
-								    <input type="file" class="formcontrol2" id="exampleInputPassword2" name="imagem" placeholder="Começa com ..">
+								    <input type="file" class="formcontrol2" id="exampleInputPassword2" name="imagem">
 									<br />
 									<label>Uma breve descrição</label>
 									<textarea rows="4" cols="50" class="form-control" name="descricao" style="width:50%" placeholder="Escreva uma breve descrição do seu problema"></textarea>
@@ -140,7 +140,7 @@
 				
 			</div>
 			
-		</section><! --/wrapper -->
+		</section>
 			
        	  
 		</div>
